@@ -1,0 +1,572 @@
+ <!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMRAS - ადმინისტრატორის პანელი</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- სათაური -->
+        <header class="admin-header">
+            <div class="header-left">
+                <h1><i class="fas fa-tools"></i> HOMRAS ადმინ პანელი</h1>
+                <p class="subtitle">სისტემის მართვა და მონიტორინგი</p>
+            </div>
+            <div class="header-right">
+                <div class="admin-info">
+                    <img src="../frontend/images/default-avatar.png" alt="ადმინის ავატარი" class="admin-avatar">
+                    <div>
+                        <span class="admin-name">ადმინისტრატორი</span>
+                        <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> გასვლა</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- მთავარი კონტენტი -->
+        <div class="admin-main">
+            <!-- მხარე მენიუ -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="nav-item active" data-section="dashboard">
+                            <i class="fas fa-chart-line"></i>
+                            <span>დეშბორდი</span>
+                        </li>
+                        <li class="nav-item" data-section="users">
+                            <i class="fas fa-users"></i>
+                            <span>მომხმარებლები</span>
+                        </li>
+                        <li class="nav-item" data-section="handymen">
+                            <i class="fas fa-user-cog"></i>
+                            <span>ხელოსნები</span>
+                            <span class="badge" id="pendingCount">0</span>
+                        </li>
+                        <li class="nav-item" data-section="jobs">
+                            <i class="fas fa-briefcase"></i>
+                            <span>სამუშაოები</span>
+                        </li>
+                        <li class="nav-item" data-section="reviews">
+                            <i class="fas fa-star"></i>
+                            <span>რეცენზიები</span>
+                        </li>
+                        <li class="nav-item" data-section="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>შეტყობინებები</span>
+                        </li>
+                        <li class="nav-item" data-section="reports">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>ანგარიშები</span>
+                        </li>
+                        <li class="nav-item" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>პარამეტრები</span>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="system-status">
+                    <h3><i class="fas fa-server"></i> სისტემის სტატუსი</h3>
+                    <div class="status-item">
+                        <span>API სერვერი</span>
+                        <span class="status-indicator active" id="apiStatus"></span>
+                    </div>
+                    <div class="status-item">
+                        <span>მონაცემთა ბაზა</span>
+                        <span class="status-indicator active" id="dbStatus"></span>
+                    </div>
+                    <div class="status-item">
+                        <span>შესრულებული სამუშაოები (დღეში)</span>
+                        <span class="status-value" id="dailyJobs">0</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- სექციების შინაარსი -->
+            <main class="content-area">
+                <!-- დეშბორდი -->
+                <section id="dashboardSection" class="content-section active">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-line"></i> დეშბორდი</h2>
+                        <div class="date-selector">
+                            <select id="timeRange">
+                                <option value="today">დღეს</option>
+                                <option value="week">ბოლო 7 დღე</option>
+                                <option value="month" selected>ბოლო 30 დღე</option>
+                                <option value="year">ბოლო წელი</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: #e3f2fd;">
+                                <i class="fas fa-users" style="color: #1976d2;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalUsers">0</h3>
+                                <p>მომხმარებელი</p>
+                            </div>
+                            <div class="stat-trend up" id="userTrend">
+                                <i class="fas fa-arrow-up"></i> 12%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: #f3e5f5;">
+                                <i class="fas fa-user-cog" style="color: #7b1fa2;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalHandymen">0</h3>
+                                <p>ხელოსანი</p>
+                            </div>
+                            <div class="stat-trend up" id="handymanTrend">
+                                <i class="fas fa-arrow-up"></i> 8%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: #e8f5e9;">
+                                <i class="fas fa-briefcase" style="color: #388e3c;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalJobs">0</h3>
+                                <p>სამუშაო</p>
+                            </div>
+                            <div class="stat-trend down" id="jobTrend">
+                                <i class="fas fa-arrow-down"></i> 3%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: #fff3e0;">
+                                <i class="fas fa-star" style="color: #f57c00;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="avgRating">0.0</h3>
+                                <p>საშუალო რეიტინგი</p>
+                            </div>
+                            <div class="stat-trend up" id="ratingTrend">
+                                <i class="fas fa-arrow-up"></i> 0.4
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <h3>სამუშაოების სტატისტიკა</h3>
+                            <canvas id="jobsChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>ტოპ კატეგორიები</h3>
+                            <canvas id="categoriesChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h3>ბოლო აქტივობები</h3>
+                        <div class="activity-list" id="activityList">
+                            <!-- აქტივობები დაიმატება JavaScript-ით -->
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- მომხმარებლები -->
+                <section id="usersSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> მომხმარებლების მართვა</h2>
+                        <div class="section-actions">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="userSearch" placeholder="მოძებნე მომხმარებელი...">
+                            </div>
+                            <button class="btn btn-secondary" id="exportUsers"><i class="fas fa-download"></i> ექსპორტი</button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>სახელი</th>
+                                    <th>ელ. ფოსტა</th>
+                                    <th>ტელეფონი</th>
+                                    <th>რეგისტრაცია</th>
+                                    <th>სტატუსი</th>
+                                    <th>მოქმედებები</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- მომხმარებლები დაიმატება JavaScript-ით -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination" id="usersPagination">
+                        <!-- პაგინაცია დაიმატება JavaScript-ით -->
+                    </div>
+                </section>
+                
+                <!-- ხელოსნები -->
+                <section id="handymenSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-user-cog"></i> ხელოსნების მართვა</h2>
+                        <div class="section-actions">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">ყველა</button>
+                                <button class="filter-btn" data-filter="pending">დასამტკიცებელი <span class="badge">0</span></button>
+                                <button class="filter-btn" data-filter="verified">დამოწმებული</button>
+                                <button class="filter-btn" data-filter="suspended">დაბლოკილი</button>
+                            </div>
+                            <button class="btn btn-primary" id="addHandymanBtn"><i class="fas fa-plus"></i> დამატება</button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ხელოსანი</th>
+                                    <th>სპეციალიზაცია</th>
+                                    <th>რეიტინგი</th>
+                                    <th>სამუშაო</th>
+                                    <th>სტატუსი</th>
+                                    <th>მოქმედებები</th>
+                                </tr>
+                            </thead>
+                            <tbody id="handymenTableBody">
+                                <!-- ხელოსნები დაიმატება JavaScript-ით -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- სამუშაოები -->
+                <section id="jobsSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-briefcase"></i> სამუშაოების მართვა</h2>
+                        <div class="section-actions">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">ყველა</button>
+                                <button class="filter-btn" data-filter="pending">მოთხოვნილი</button>
+                                <button class="filter-btn" data-filter="active">აქტიური</button>
+                                <button class="filter-btn" data-filter="completed">დასრულებული</button>
+                                <button class="filter-btn" data-filter="cancelled">გაუქმებული</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>სამუშაო</th>
+                                    <th>კლიენტი</th>
+                                    <th>ხელოსანი</th>
+                                    <th>თარიღი</th>
+                                    <th>სტატუსი</th>
+                                    <th>ფასი</th>
+                                    <th>მოქმედებები</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jobsTableBody">
+                                <!-- სამუშაოები დაიმატება JavaScript-ით -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- რეცენზიები -->
+                <section id="reviewsSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-star"></i> რეცენზიების მართვა</h2>
+                        <div class="section-actions">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">ყველა</button>
+                                <button class="filter-btn" data-filter="reported">დასარეპორტებელი</button>
+                                <button class="filter-btn" data-filter="positive">დადებითი</button>
+                                <button class="filter-btn" data-filter="negative">უარყოფითი</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-container">
+                        <!-- რეცენზიები დაიმატება JavaScript-ით -->
+                    </div>
+                </section>
+                
+                <!-- შეტყობინებები -->
+                <section id="messagesSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-envelope"></i> შეტყობინებების მართვა</h2>
+                        <div class="section-actions">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="messageSearch" placeholder="მოძებნე შეტყობინება...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="messages-container">
+                        <div class="messages-sidebar">
+                            <div class="conversation-list" id="conversationList">
+                                <!-- საუბრები დაიმატება JavaScript-ით -->
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <h3 id="selectedConversation">აირჩიეთ საუბარი</h3>
+                            </div>
+                            <div class="message-history" id="messageHistory">
+                                <!-- შეტყობინებების ისტორია -->
+                            </div>
+                            <div class="message-input-area">
+                                <textarea id="replyMessage" placeholder="დაწერეთ პასუხი..."></textarea>
+                                <button class="btn btn-primary" id="sendReplyBtn"><i class="fas fa-paper-plane"></i> გაგზავნა</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ანგარიშები -->
+                <section id="reportsSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-pie"></i> ანგარიშები</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-secondary" id="generateReport"><i class="fas fa-file-export"></i> ანგარიშის გენერაცია</button>
+                        </div>
+                    </div>
+                    
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <h3>შემოსავალი (ბოლო 30 დღე)</h3>
+                            <div class="revenue-chart">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                            <div class="revenue-summary">
+                                <div class="revenue-item">
+                                    <span>საერთო შემოსავალი:</span>
+                                    <span class="revenue-value" id="totalRevenue">₾0.00</span>
+                                </div>
+                                <div class="revenue-item">
+                                    <span>საკომისიო:</span>
+                                    <span class="revenue-value" id="totalCommission">₾0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>ტოპ ხელოსნები</h3>
+                            <div class="top-handymen" id="topHandymenList">
+                                <!-- ტოპ ხელოსნები დაიმატება JavaScript-ით -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-card full-width">
+                        <h3>დეტალური ტრანზაქციები</h3>
+                        <div class="data-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>თარიღი</th>
+                                        <th>კლიენტი</th>
+                                        <th>ხელოსანი</th>
+                                        <th>სერვისი</th>
+                                        <th>თანხა</th>
+                                        <th>სტატუსი</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionsTableBody">
+                                    <!-- ტრანზაქციები დაიმატება JavaScript-ით -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- პარამეტრები -->
+                <section id="settingsSection" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cog"></i> სისტემის პარამეტრები</h2>
+                    </div>
+                    
+                    <div class="settings-tabs">
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="general">ზოგადი</button>
+                            <button class="tab-btn" data-tab="commission">საკომისიო</button>
+                            <button class="tab-btn" data-tab="notifications">შეტყობინებები</button>
+                            <button class="tab-btn" data-tab="security">უსაფრთხოება</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="generalTab">
+                            <form id="generalSettingsForm">
+                                <div class="form-group">
+                                    <label for="siteName">საიტის სახელი</label>
+                                    <input type="text" id="siteName" value="HOMRAS" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="siteDescription">საიტის აღწერა</label>
+                                    <textarea id="siteDescription" rows="3">სახლის სარემონტო და მოვლის სერვისების პლატფორმა</textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="adminEmail">ადმინისტრატორის ელ. ფოსტა</label>
+                                    <input type="email" id="adminEmail" value="admin@homras.ge" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="defaultLanguage">ნაგულისხმევი ენა</label>
+                                    <select id="defaultLanguage">
+                                        <option value="ka" selected>ქართული</option>
+                                        <option value="en">ინგლისური</option>
+                                        <option value="ru">რუსული</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">ცვლილებების შენახვა</button>
+                            </form>
+                        </div>
+                        
+                        <div class="tab-content" id="commissionTab">
+                            <form id="commissionSettingsForm">
+                                <div class="form-group">
+                                    <label for="commissionRate">საკომისიო განაკვეთი (%)</label>
+                                    <input type="number" id="commissionRate" min="0" max="50" step="0.1" value="15" required>
+                                    <p class="form-help">პროცენტი, რომელსაც სისტემა იღებს თითოეული ტრანზაქციიდან</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="minWithdrawal">მინიმალური გატანის თანხა (₾)</label>
+                                    <input type="number" id="minWithdrawal" min="10" step="5" value="50" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="withdrawalDays">გადახდის დღეები</label>
+                                    <select id="withdrawalDays" multiple>
+                                        <option value="1" selected>ორშაბათი</option>
+                                        <option value="3" selected>ოთხშაბათი</option>
+                                        <option value="5" selected>პარასკევი</option>
+                                    </select>
+                                    <p class="form-help">აირჩიეთ დღეები, როდესაც ხელოსნებს შეუძლიათ თანხის გატანა</p>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">ცვლილებების შენახვა</button>
+                            </form>
+                        </div>
+                        
+                        <div class="tab-content" id="notificationsTab">
+                            <form id="notificationSettingsForm">
+                                <h3>ელ. ფოსტის შეტყობინებები</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailNewUser" checked>
+                                    <label for="emailNewUser">ახალი მომხმარებლის რეგისტრაცია</label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailNewJob" checked>
+                                    <label for="emailNewJob">ახალი სამუშაოს შეკვეთა</label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailJobCompleted" checked>
+                                    <label for="emailJobCompleted">სამუშაოს დასრულება</label>
+                                </div>
+                                
+                                <h3>SMS შეტყობინებები</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="smsNewJob" checked>
+                                    <label for="smsNewJob">ახალი სამუშაოს შეკვეთა (SMS)</label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="smsReminder">
+                                    <label for="smsReminder">დასრულების შეხსენება (SMS)</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">ცვლილებების შენახვა</button>
+                            </form>
+                        </div>
+                        
+                        <div class="tab-content" id="securityTab">
+                            <form id="securitySettingsForm">
+                                <div class="form-group">
+                                    <label for="sessionTimeout">სესიის ვადა (წუთები)</label>
+                                    <input type="number" id="sessionTimeout" min="5" max="1440" value="60" required>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="require2FA" checked>
+                                    <label for="require2FA">მოითხოვოს ორფაქტორიანი ავთენტიფიკაცია ადმინისთვის</label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="maxLoginAttempts">მაქსიმალური შესვლის მცდელობა</label>
+                                    <input type="number" id="maxLoginAttempts" min="1" max="10" value="5" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ipWhitelist">IP ვაიტლისტი</label>
+                                    <textarea id="ipWhitelist" rows="4" placeholder="ჩაწერეთ დაშვებული IP მისამართები, თითო ხაზზე ერთი"></textarea>
+                                    <p class="form-help">დატოვეთ ცარიელი ყველა IP-ს დასაშვებად</p>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">ცვლილებების შენახვა</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <!-- ფუტერი -->
+        <footer class="admin-footer">
+            <p>HOMRAS Admin Panel &copy; 2023. ყველა უფლება დაცულია.</p>
+            <p class="version">ვერსია: 1.0.0 | ბოლო განახლება: 2023-11-15</p>
+        </footer>
+    </div>
+    
+    <!-- მოდალური ფანჯრები -->
+    <div id="handymanModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ხელოსნის დამატება/რედაქტირება</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- ფორმა დაიმატება JavaScript-ით -->
+            </div>
+        </div>
+    </div>
+    
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3>დადასტურება</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmationText">დარწმუნებული ხართ?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="cancelBtn">გაუქმება</button>
+                    <button class="btn btn-danger" id="confirmBtn">დადასტურება</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

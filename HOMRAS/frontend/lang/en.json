@@ -1,0 +1,312 @@
+{
+  "hero": {
+    "title": "Find Reliable Handymen for Your Home",
+    "subtitle": "Connect with trusted plumbers, electricians, repairmen, and cleaners in Batumi and across Georgia"
+  },
+  "stats": {
+    "verified": "Verified Handymen",
+    "completed": "Completed Projects",
+    "rating": "Average Rating"
+  },
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "jobs": "Jobs",
+    "handymen": "Handymen",
+    "pricing": "Pricing",
+    "about": "About Us"
+  },
+  "howItWorks": {
+    "title": "How HOMRAS Works",
+    "subtitle": "3 Simple Steps to Find a Reliable Handyman",
+    "step1": {
+      "title": "Describe the Job",
+      "desc": "Fill out a simple form: what you need, where, and when"
+    },
+    "step2": {
+      "title": "Choose a Handyman",
+      "desc": "Receive offers from verified professionals"
+    },
+    "step3": {
+      "title": "Complete and Rate",
+      "desc": "Finish the job and leave a review for the handyman"
+    }
+  },
+  "jobs": {
+    "recent": "Recently Posted Jobs",
+    "subtitle": "Current job listings for handymen",
+    "loading": "Loading jobs...",
+    "loadMore": "Load More Jobs",
+    "noJobs": "No jobs found"
+  },
+  "handymen": {
+    "top": "Top Handymen",
+    "subtitle": "Verified professionals for your home"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "customer": "Customer",
+    "handyman": "Handyman",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "registerAs": "Register as"
+  },
+  "postJob": {
+    "title": "Post a New Job",
+    "titleField": "Job Title",
+    "category": "Category",
+    "description": "Description",
+    "budget": "Budget (₾)",
+    "city": "City",
+    "address": "Address",
+    "photos": "Photos (Optional)",
+    "other": "Other",
+    "submit": "Publish Job"
+  },
+  "category": {
+    "plumbing": "Plumbing",
+    "electrical": "Electrical",
+    "repair": "Repair",
+    "cleaning": "Cleaning"
+  },
+  "filter": {
+    "all": "All Categories",
+    "allCities": "All Cities"
+  },
+  "footer": {
+    "description": "Platform for connecting handymen and customers in Georgia",
+    "links": "Links",
+    "services": "Services",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms & Conditions",
+    "admin": "Admin Panel"
+  },
+  "jobStatus": {
+    "open": "Open",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "user": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "myJobs": "My Jobs",
+    "logout": "Logout",
+    "messages": "Messages",
+    "settings": "Settings"
+  },
+  "buttons": {
+    "apply": "Apply",
+    "contact": "Contact",
+    "viewDetails": "View Details",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back"
+  },
+  "messages": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "deleting": "Deleting..."
+  },
+  "validation": {
+    "required": "This field is required",
+    "emailInvalid": "Please enter a valid email",
+    "phoneInvalid": "Please enter a valid phone number",
+    "passwordLength": "Password must be at least 6 characters",
+    "passwordMatch": "Passwords do not match"
+  },
+  "notifications": {
+    "loginSuccess": "Successfully logged in!",
+    "loginError": "Login failed. Please check your credentials.",
+    "registerSuccess": "Registration successful! Please login.",
+    "registerError": "Registration failed. Please try again.",
+    "jobPosted": "Job posted successfully!",
+    "jobUpdated": "Job updated successfully!",
+    "jobDeleted": "Job deleted successfully!",
+    "profileUpdated": "Profile updated successfully!",
+    "reviewSubmitted": "Review submitted successfully!",
+    "messageSent": "Message sent successfully!",
+    "sessionExpired": "Session expired. Please login again.",
+    "offline": "You are offline. Some features may not work.",
+    "online": "You are back online!"
+  },
+  "admin": {
+    "login": "Admin Login",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "jobs": "Jobs",
+    "reviews": "Reviews",
+    "settings": "Settings",
+    "stats": "Statistics",
+    "totalUsers": "Total Users",
+    "totalJobs": "Total Jobs",
+    "totalHandymen": "Total Handymen",
+    "totalRevenue": "Total Revenue",
+    "search": "Search...",
+    "filterBy": "Filter by",
+    "role": "Role",
+    "status": "Status",
+    "actions": "Actions",
+    "active": "Active",
+    "inactive": "Inactive",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "confirmDelete": "Confirm Delete",
+    "deleteConfirmation": "Are you sure you want to delete this item?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "cities": {
+    "batumi": "Batumi",
+    "tbilisi": "Tbilisi",
+    "kutaisi": "Kutaisi",
+    "other": "Other"
+  },
+  "ratings": {
+    "excellent": "Excellent",
+    "good": "Good",
+    "average": "Average",
+    "poor": "Poor",
+    "terrible": "Terrible"
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "free": "Free",
+    "basic": "Basic",
+    "premium": "Premium",
+    "perMonth": "per month",
+    "features": "Features",
+    "postJobs": "Post Jobs",
+    "applyJobs": "Apply to Jobs",
+    "unlimited": "Unlimited",
+    "verifiedBadge": "Verified Badge",
+    "prioritySupport": "Priority Support",
+    "featuredListings": "Featured Listings",
+    "choosePlan": "Choose Plan",
+    "currentPlan": "Current Plan",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade"
+  },
+  "about": {
+    "title": "About HOMRAS",
+    "mission": "Our Mission",
+    "missionText": "To connect homeowners with reliable, verified professionals for all home service needs across Georgia.",
+    "vision": "Our Vision",
+    "visionText": "To become Georgia's most trusted platform for home services, recognized for quality, reliability, and customer satisfaction.",
+    "team": "Our Team",
+    "contact": "Contact Us"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Your Name",
+    "email": "Your Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Your message has been sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "profile": {
+    "title": "My Profile",
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "personalInfo": "Personal Information",
+    "contactInfo": "Contact Information",
+    "skills": "Skills",
+    "experience": "Experience",
+    "verification": "Verification",
+    "verified": "Verified",
+    "notVerified": "Not Verified",
+    "uploadPhoto": "Upload Photo",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password"
+  },
+  "jobDetails": {
+    "title": "Job Details",
+    "description": "Job Description",
+    "location": "Location",
+    "budget": "Budget",
+    "postedBy": "Posted By",
+    "postedOn": "Posted On",
+    "status": "Status",
+    "applicants": "Applicants",
+    "photos": "Photos",
+    "applyNow": "Apply Now",
+    "contactCustomer": "Contact Customer",
+    "similarJobs": "Similar Jobs"
+  },
+  "messagesPage": {
+    "title": "Messages",
+    "inbox": "Inbox",
+    "sent": "Sent",
+    "unread": "Unread",
+    "compose": "Compose",
+    "to": "To",
+    "subject": "Subject",
+    "typeMessage": "Type your message here...",
+    "send": "Send",
+    "noMessages": "No messages yet",
+    "selectConversation": "Select a conversation to start messaging"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "agenda": "Agenda",
+    "noEvents": "No events scheduled",
+    "addEvent": "Add Event"
+  },
+  "reports": {
+    "title": "Reports",
+    "generate": "Generate Report",
+    "download": "Download",
+    "period": "Period",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "custom": "Custom",
+    "from": "From",
+    "to": "To",
+    "usersReport": "Users Report",
+    "jobsReport": "Jobs Report",
+    "revenueReport": "Revenue Report"
+  },
+  "errors": {
+    "general": "An error occurred. Please try again.",
+    "network": "Network error. Please check your internet connection.",
+    "server": "Server error. Please try again later.",
+    "notFound": "The requested resource was not found.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "forbidden": "Access forbidden.",
+    "timeout": "Request timeout. Please try again."
+  },
+  "success": {
+    "operationCompleted": "Operation completed successfully!",
+    "changesSaved": "Changes saved successfully!",
+    "itemDeleted": "Item deleted successfully!",
+    "itemCreated": "Item created successfully!"
+  }
+} 

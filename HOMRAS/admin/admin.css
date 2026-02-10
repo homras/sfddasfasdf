@@ -1,0 +1,1079 @@
+/* საერთო სტილები */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #7c3aed;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --gray-color: #6b7280;
+    --light-gray: #e5e7eb;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans Georgian', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* სათაური */
+.admin-header {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    z-index: 100;
+}
+
+.header-left h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subtitle {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--light-gray);
+}
+
+.admin-name {
+    font-weight: 600;
+    display: block;
+}
+
+.logout-btn {
+    background-color: var(--light-gray);
+    color: var(--gray-color);
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* მთავარი კონტენტი */
+.admin-main {
+    display: flex;
+    flex: 1;
+}
+
+/* მხარე მენიუ */
+.sidebar {
+    width: 260px;
+    background-color: white;
+    border-right: 1px solid var(--light-gray);
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.nav-item {
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--gray-color);
+    transition: var(--transition);
+    position: relative;
+    border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: #f8fafc;
+    color: var(--primary-color);
+}
+
+.nav-item.active {
+    background-color: #eff6ff;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.nav-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.badge {
+    background-color: var(--danger-color);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+/* სისტემის სტატუსი */
+.system-status {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--light-gray);
+    margin-top: 1rem;
+}
+
+.system-status h3 {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    font-size: 0.9rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-indicator.active {
+    background-color: var(--success-color);
+}
+
+.status-indicator.inactive {
+    background-color: var(--danger-color);
+}
+
+.status-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* სექციების შინაარსი */
+.content-area {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ღილაკები */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--light-gray);
+    color: var(--dark-color);
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #0da271;
+}
+
+.btn-small {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+}
+
+/* სტატისტიკის ბარათები */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.stat-icon i {
+    font-size: 1.5rem;
+}
+
+.stat-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.stat-info p {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.stat-trend {
+    margin-left: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.stat-trend.up {
+    background-color: #d1fae5;
+    color: var(--success-color);
+}
+
+.stat-trend.down {
+    background-color: #fee2e2;
+    color: var(--danger-color);
+}
+
+/* დიაგრამები */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.chart-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* ცხრილები */
+.data-table-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background-color: #f8fafc;
+}
+
+.data-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--dark-color);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.data-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* სტატუსის ტეგები */
+.status-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-completed {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.status-cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.status-verified {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-suspended {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* ფილტრის ღილაკები */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--light-gray);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: #d1d5db;
+}
+
+/* ძებნის ველი */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    color: var(--gray-color);
+}
+
+.search-box input {
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    width: 250px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* აქტივობების სია */
+.recent-activity {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.activity-list {
+    margin-top: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: var(--primary-color);
+}
+
+.activity-details h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.activity-details p {
+    color: var(--gray-color);
+    font-size: 0.85rem;
+}
+
+.activity-time {
+    margin-left: auto;
+    color: var(--gray-color);
+    font-size: 0.8rem;
+}
+
+/* შეტყობინებების კონტეინერი */
+.messages-container {
+    display: flex;
+    height: 600px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.messages-sidebar {
+    width: 300px;
+    border-right: 1px solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.conversation-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.conversation-item:hover {
+    background-color: #f9fafb;
+}
+
+.conversation-item.active {
+    background-color: #eff6ff;
+}
+
+.conversation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.conversation-name {
+    font-weight: 600;
+}
+
+.conversation-time {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+}
+
+.conversation-preview {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.message-history {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 0.8rem 1rem;
+    border-radius: 18px;
+    position: relative;
+}
+
+.message-bubble.sent {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message-bubble.received {
+    align-self: flex-start;
+    background-color: #f3f4f6;
+    color: var(--dark-color);
+    border-bottom-left-radius: 4px;
+}
+
+.message-input-area {
+    padding: 1rem;
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    gap: 10px;
+}
+
+.message-input-area textarea {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    resize: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-height: 60px;
+}
+
+/* პარამეტრების ტაბები */
+.settings-tabs {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--light-gray);
+    background-color: #f8fafc;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--primary-color);
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.tab-content {
+    padding: 2rem;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ფორმები */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+}
+
+.form-help {
+    margin-top: 5px;
+    color: var(--gray-color);
+    font-size: 0.85rem;
+}
+
+/* მოდალური ფანჯრები */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content.small {
+    max-width: 400px;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-color);
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--dark-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+/* რეპორტების გრიდი */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.report-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.report-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.revenue-chart {
+    height: 200px;
+    margin: 1rem 0;
+}
+
+.revenue-summary {
+    border-top: 1px solid var(--light-gray);
+    padding-top: 1rem;
+}
+
+.revenue-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.revenue-value {
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+.top-handymen {
+    margin-top: 1rem;
+}
+
+.handyman-rank {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.handyman-rank:last-child {
+    border-bottom: none;
+}
+
+.rank-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 1rem;
+    color: var(--primary-color);
+}
+
+.handyman-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.handyman-info p {
+    font-size: 0.85rem;
+    color: var(--gray-color);
+}
+
+.handyman-stats {
+    margin-left: auto;
+    text-align: right;
+}
+
+.handyman-rating {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.handyman-jobs {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+}
+
+/* ფუტერი */
+.admin-footer {
+    background-color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--light-gray);
+    font-size: 0.9rem;
+    color: var(--gray-color);
+}
+
+.version {
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* პაგინაცია */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #f3f4f6;
+}
+
+.pagination-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* რესპონსივობა */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-main {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .sidebar-nav ul {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .nav-item {
+        padding: 0.7rem 1rem;
+        white-space: nowrap;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .nav-item.active {
+        border-left: none;
+        border-bottom-color: var(--primary-color);
+    }
+    
+    .system-status {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .section-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .search-box input {
+        width: 200px;
+    }
+    
+    .messages-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .messages-sidebar {
+        width: 100%;
+        height: 300px;
+        border-right: none;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .section-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+} 

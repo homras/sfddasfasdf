@@ -1,0 +1,95 @@
+{
+  "version": 2,
+  "name": "homras-backend",
+  "public": false,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "public/**",
+          "models/**",
+          "routes/**",
+          "middleware/**",
+          "controllers/**",
+          "config/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Credentials": "true"
+      }
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "server.js",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/",
+      "dest": "server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api-docs",
+      "dest": "server.js",
+      "methods": ["GET"]
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "FRONTEND_URL": "https://homras.ge,https://www.homras.ge,https://homras.netlify.app"
+  },
+  "regions": ["fra1"],
+  "functions": {
+    "server.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "server.js"
+    }
+  ]
+} 
