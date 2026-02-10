@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMRAS - ხელოსნების პლატფორმა</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="icon" type="image/x-icon" href="images/logo.svg">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="HOMRAS Logo" class="logo">
+                    <span class="brand-name">HOMRAS</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">მთავარი</a></li>
+                <li><a href="pages/craftsmen.html">ხელოსნები</a></li>
+                <li><a href="pages/categories.html">კატეგორიები</a></li>
+                <li><a href="pages/about.html">ჩვენ შესახებ</a></li>
+                <li><a href="pages/contact.html">კონტაქტი</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn-login">შესვლა</button>
+                <button class="btn-register">რეგისტრაცია</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>იპოვეთ საუკეთესო ხელოსნები თქვენს რეგიონში</h1>
+                <p>შეაერთეთ ხარისხიანი ხელოსნები და კმაყოფილი მომხმარებლები ერთ პლატფორმაზე</p>
+                <div class="search-box">
+                    <input type="text" placeholder="რა ხელოსანი გჭირდებათ?">
+                    <input type="text" placeholder="რეგიონი ან ქალაქი">
+                    <button class="btn-search">ძებნა</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-craftsmen">
+            <h2>რეკომენდებული ხელოსნები</h2>
+            <div class="craftsmen-grid" id="featuredCraftsmen">
+                <!-- JavaScript-ით დაემატება -->
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>კატეგორიები</h2>
+            <div class="categories-grid">
+                <!-- JavaScript-ით დაემატება -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HOMRAS</h3>
+                <p>ხელოსნების პლატფორმა</p>
+            </div>
+            <div class="footer-section">
+                <h3>ბმულები</h3>
+                <ul>
+                    <li><a href="pages/about.html">ჩვენ შესახებ</a></li>
+                    <li><a href="pages/contact.html">კონტაქტი</a></li>
+                    <li><a href="#">წესები და პირობები</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>კონტაქტი</h3>
+                <p>ელ.ფოსტა: info@homras.ge</p>
+                <p>ტელ: +995 32 XXX XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HOMRAS. ყველა უფლება დაცულია.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/craftsmen.js"></script>
+</body>
+</html> 
  
+
