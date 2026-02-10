@@ -12,7 +12,7 @@ let transactions = [];
 let activities = [];
 
 // API ბაზური მისამართი
-const API_BASE_URL = 'http://localhost:5000/api/admin';
+const API_BASE_URL = 'https://homras.onrender.com/api/admin';
 
 // ტოკენის მენეჯმენტი
 function getAuthToken() {
@@ -1618,3 +1618,4 @@ function initApp() {
 
 // გაშვება, როდესაც დოკუმენტი ჩაიტვირთება
 document.addEventListener('DOMContentLoaded', initApp); 
+
